@@ -3,4 +3,14 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    oskgadget.cpp \
+    oskdevice.cpp \
+    oskcam.cpp \
+    oskloadcell.cpp
+
+HEADERS += \
+    oskgadget.h \
+    oskdevice.h \
+    oskcam.h \
+    oskloadcell.h
