@@ -8,7 +8,7 @@ class OSKdevice;
 class OSKcam : public OSKdevice
 {
 public:
-    OSKcam();
+    OSKcam(std::string id, int freq);
 };
 
 #endif // OSKCAM_H

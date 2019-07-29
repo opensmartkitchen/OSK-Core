@@ -13,8 +13,8 @@ class OSKdevice;
 class OSKloadcell : public OSKdevice
 {
 public:
-    OSKloadcell();
-    static bool run();
+    OSKloadcell(std::string id, int freq);
+    static bool run(OSKloadcell *me);
     void start();
 private:
     //Serial Communication Variables
