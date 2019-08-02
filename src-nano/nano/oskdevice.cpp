@@ -9,6 +9,8 @@ OSKdevice::OSKdevice(std::string id, int freq)
     m_start = std::chrono::system_clock::now();
 }
 
+OSKdevice::~OSKdevice(){}
+
 std::string OSKdevice::getID(){ return m_id; }
 
 bool OSKdevice::isTime(){

@@ -25,6 +25,8 @@ OSKloadcell::OSKloadcell(std::string id, int freq) : OSKdevice(id, freq)
     }
 }
 
+OSKloadcell::~OSKloadcell(){};
+
 void OSKloadcell::start(){
     m_thread = new std::thread(run,this);
 }

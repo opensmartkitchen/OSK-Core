@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
-#include <thread>
 
 #include "oskdevice.h"
 
@@ -14,6 +13,7 @@ class OSKloadcell : public OSKdevice
 {
 public:
     OSKloadcell(std::string id, int freq);
+    ~OSKloadcell();
     static bool run(OSKloadcell *me);
     void start();
 private:
@@ -22,8 +22,6 @@ private:
     static char m_readBuffer[1024];
     static int m_numBytesRead;
 
-    //Threading Variables
-    std::thread* m_thread;
 };
 
 #endif // OSKLOADCELL_H

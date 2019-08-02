@@ -2,8 +2,10 @@
 #include <chrono>
 
 #include "oskloadcell.h"
+#include "oskcam.h"
 
 class OSKloadcell;
+class OSKcam;
 
 using namespace std;
 
@@ -14,6 +16,9 @@ int main()
     OSKloadcell device1("LoadCell",5);
 //    device1.run();
     device1.start();
+
+    OSKcam device2("Camera",30);
+    device2.start();
 
 
     std::chrono::time_point<std::chrono::system_clock> start, now, end;
