@@ -3,9 +3,11 @@
 
 #include "oskloadcell.h"
 #include "oskcam.h"
+#include "oskgadget.h"
 
 class OSKloadcell;
 class OSKcam;
+class OSKgadget;
 
 using namespace std;
 
@@ -18,18 +20,23 @@ int main()
     std::string filePath = "/home/mc/workspace/OSK-Core/src-nano/testoutputdata/";
 
 
-    //Initialize the Load Cell
-    OSKloadcell device1("LoadCell",5);
-    device1.setSaveDirPath(filePath);
+//    //Initialize the Load Cell
+//    OSKloadcell device1("LoadCell",5);
+//    device1.setSaveDirPath(filePath);
 
-    //Initialize the Camera
-    OSKcam device2("Camera",30);
-    device2.setSaveDirPath(filePath);
-    device1.setCam(&device2);
+//    //Initialize the Camera
+//    OSKcam device2("Camera",30);
+//    device2.setSaveDirPath(filePath);
+//    device1.setCam(&device2);
 
-    //Start Devices!
-    device1.start();
-    device2.start();
+//    //Start Devices!
+//    device1.start();
+//    device2.start();
+
+    OSKgadget gadget("Hackday2019",filePath);
+    gadget.init();
+    gadget.run();
+
 
 
     std::chrono::time_point<std::chrono::system_clock> start, now, end;
