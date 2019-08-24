@@ -15,12 +15,18 @@ int main()
 {
     cout << "Testing OSK" << endl;
 
+    //Initialize the Load Cell
     OSKloadcell device1("LoadCell",5);
     device1.setSaveDirPath("/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/");
-    device1.start();
 
-//    OSKcam device2("Camera",30);
-//    device2.start();
+    //Initialize the Camera
+    OSKcam device2("Camera",30);
+    device2.setSaveDirPath("/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/");
+    device1.setCam(&device2);
+
+    //Start Devices!
+    device1.start();
+    device2.start();
 
 
     std::chrono::time_point<std::chrono::system_clock> start, now, end;

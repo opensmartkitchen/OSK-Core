@@ -23,6 +23,10 @@ public:
      * @return The number of the image at last weight change
      */
     int getImageNum();
+    void setTakeSnapshot(bool toSet, int time);
+protected:
+    bool getTakeSnapshot();
+    int getTimeSnapshot();
 private:
     bool initCam();
 
@@ -33,6 +37,10 @@ private:
     int m_displayHeight = 720;
     int m_framerate = 60;
     int m_flipMethod = 0;
+
+    //Snapshot Parameters
+    std::atomic<bool> m_takeSnapshot {false};
+    std::atomic<int> m_timeSnapshot{0};
 
     //Camera Capture Object
     cv::VideoCapture* m_vidCap = NULL;

@@ -7,11 +7,13 @@
 #include <fstream>
 
 #include "oskdevice.h"
+#include "oskcam.h"
 
 #define DEBUG_DATALINE false
 #define DATA_LENGTH 12
 
 class OSKdevice;
+class OSKcam;
 
 class OSKloadcell : public OSKdevice
 {
@@ -21,6 +23,9 @@ public:
     static bool run(OSKloadcell *me);
     double getWeight();
     void start();
+    void setCam(OSKcam* cam);
+protected:
+    OSKcam* getCam();
 private:
     bool procDataLine();
 
@@ -34,6 +39,9 @@ private:
     double m_data[DATA_LENGTH]; //LAST POINT IS THE AVERAGE!
     double m_weight = 0.0;
     double m_deltaWeight = 0.0;
+
+    //Pointer to a Camera
+    OSKcam* m_cam = NULL;
 };
 
 #endif // OSKLOADCELL_H

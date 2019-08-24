@@ -44,11 +44,17 @@ bool OSKloadcell::run(OSKloadcell *me){
                 m_dataline += std::string(m_readBuffer);
             } else{ //After getting a FULL line, write to file
                 std::cout << m_dataline << std::endl;
+                std::string time = me->getTimestamp() ;
+
+                //TODO: Send trigger to camera to save a frame!!!
+                if(me->getCam() != NULL){
+                    me->getCam()->setTakeSnapshot(true,std::stoi(time));
+                }
 
                 //Write to CSV File
                 static int fileNum = 0;
                 std::ofstream file;
-                std::string fileName = me->getSaveDirPath() + me->getTimestamp() + "_weight.csv";
+                std::string fileName = me->getSaveDirPath() + time + "_weight.csv";
                 file.open(fileName);
                 file << m_dataline << std::endl;
 
@@ -57,8 +63,6 @@ bool OSKloadcell::run(OSKloadcell *me){
                 m_dataline = "";
                 fileNum++;
             }
-
-            //TODO: Send trigger to camera to save a frame!!!
         }
     }
     return 0;
@@ -69,6 +73,11 @@ double OSKloadcell::getWeight(){
     return m_weight;
 }
 
+void OSKloadcell::setCam(OSKcam *cam){
+    m_cam = cam;
+}
+
+OSKcam* OSKloadcell::getCam(){return m_cam;}
 
 bool OSKloadcell::procDataLine(){
 #if (DEBUG_DATALINE == true)
