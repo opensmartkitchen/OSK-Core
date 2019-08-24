@@ -40,9 +40,25 @@ bool OSKloadcell::run(OSKloadcell *me){
         fread(m_readBuffer, sizeof(char),1024,m_serPort);
         if(sizeof(m_readBuffer) != 0 /*&& me->isTime()*/)
         {
-            //TODO: Write a real communication protocol so we can implement some timing
-            printf(m_readBuffer);
-            m_dataline = std::string(m_readBuffer);
+            if(m_dataline.find("EOL") == std::string::npos){
+                m_dataline += std::string(m_readBuffer);
+            } else{ //After getting a FULL line, write to file
+                std::cout << m_dataline << std::endl;
+
+                //Write to CSV File
+                static int fileNum = 0;
+                std::ofstream file;
+                std::string fileName = "/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/test" + std::to_string(fileNum) + ".csv";
+                file.open(fileName);
+                file << m_dataline << std::endl;
+
+                //Wipe & Reset
+                file.close();
+                m_dataline = "";
+                fileNum++;
+            }
+
+            //TODO: Send trigger to camera to save a frame!!!
         }
     }
     return 0;

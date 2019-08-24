@@ -4,10 +4,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
+#include <fstream>
 
 #include "oskdevice.h"
 
-#define DEBUG_DATALINE true
+#define DEBUG_DATALINE false
 #define DATA_LENGTH 12
 
 class OSKdevice;
@@ -31,9 +32,8 @@ private:
 
     //Data Variables
     double m_data[DATA_LENGTH]; //LAST POINT IS THE AVERAGE!
-    double m_weight;
-    double m_deltaWeight;
-
+    double m_weight = 0.0;
+    double m_deltaWeight = 0.0;
 };
 
 #endif // OSKLOADCELL_H
