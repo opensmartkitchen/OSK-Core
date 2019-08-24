@@ -48,7 +48,7 @@ bool OSKloadcell::run(OSKloadcell *me){
                 //Write to CSV File
                 static int fileNum = 0;
                 std::ofstream file;
-                std::string fileName = "/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/test" + std::to_string(fileNum) + ".csv";
+                std::string fileName = "/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/test" + me->getTimestamp() + ".csv";
                 file.open(fileName);
                 file << m_dataline << std::endl;
 

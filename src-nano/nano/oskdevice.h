@@ -20,10 +20,25 @@ public:
      * @return [T] if the tick frequency has occured
      */
     bool isTime();
+    /**
+     * @brief setSaveDirPath
+     * @param path Path to Save DIRECTORY
+     * @return True if set OK
+     */
+    bool setSaveDirPath(std::string path);
+    /**
+     * @brief getSaveDirPath
+     * @return
+     */
+    std::string getSaveDirPath();
+
     virtual void start() = 0;
 protected:
 
+    std::string getTimestamp();
+
     bool m_initOK;
+    std::string m_saveDir; //Logging Data Directory
 
     //Threading Variables
     std::thread* m_thread;

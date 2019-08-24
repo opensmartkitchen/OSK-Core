@@ -3,6 +3,8 @@
 
 #include <string>
 #include <opencv2/opencv.hpp>
+#include <chrono>
+#include <ctime>
 
 #include "oskdevice.h"
 
@@ -16,6 +18,11 @@ public:
     static bool run(OSKcam *me);
     void start();
     cv::VideoCapture* getVidCap();
+    /**
+     * @brief getImageNum
+     * @return The number of the image at last weight change
+     */
+    int getImageNum();
 private:
     bool initCam();
 

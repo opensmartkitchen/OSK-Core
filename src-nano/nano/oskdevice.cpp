@@ -13,6 +13,17 @@ OSKdevice::~OSKdevice(){}
 
 std::string OSKdevice::getID(){ return m_id; }
 
+std::string OSKdevice::getTimestamp(){
+    std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+    std::tm now_tm = *std::localtime(&now_c);
+    char timeCstr[70];
+    std::strftime(timeCstr,sizeof timeCstr,"%F_%H-%M_%S",&now_tm);
+
+    return std::string(timeCstr);
+}
+
+
 bool OSKdevice::isTime(){
     m_now = std::chrono::system_clock::now();
     m_elapsed = m_now - m_start;
@@ -22,4 +33,13 @@ bool OSKdevice::isTime(){
     } else {
         return false;
     }
+}
+
+bool OSKdevice::setSaveDirPath(std::string path){
+    m_saveDir = path;
+    return true;
+}
+
+std::string OSKdevice::getSaveDirPath(){
+    return m_saveDir;
 }
