@@ -24,13 +24,15 @@ bool OSKcam::run(OSKcam *me){
         if (!me->getVidCap()->read(img)) {
             std::cout<<"Capture read error"<<std::endl;
             break;
-            if(me->getTakeSnapshot()){
-                std::string fileName = me->getSaveDirPath()
-                        + std::to_string(me->getTakeSnapshot())
-                        + "image.png";
-                cv::imwrite(fileName,img);
-                me->setTakeSnapshot(false,0);
-            }
+        }
+
+        if(me->getTakeSnapshot()){
+            std::cout << "Saving Cam Snapshot" << std::endl;
+            std::string fileName = me->getSaveDirPath()
+                    + std::to_string(me->getTimeSnapshot())
+                    + "_image.png";
+            cv::imwrite(fileName,img);
+            me->setTakeSnapshot(false,0);
         }
 
         cv::imshow("CSI Camera",img);
@@ -64,9 +66,12 @@ bool OSKcam::initCam(){
     }
 }
 
-void OSKcam::setTakeSnapshot(bool toSet, int time){
+void OSKcam::setTakeSnapshot(bool toSet, long time){
+    if(DEBUG_SNAPSHOT){
+        std::cout << "setTakeSnapshot CALLED" << std::endl;
+    }
     m_takeSnapshot = toSet;
     m_timeSnapshot = time;
 }
 bool OSKcam::getTakeSnapshot(){return m_takeSnapshot;}
-int OSKcam::getTimeSnapshot(){return m_timeSnapshot;}
+long OSKcam::getTimeSnapshot(){return m_timeSnapshot;}

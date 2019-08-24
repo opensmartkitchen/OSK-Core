@@ -43,12 +43,13 @@ bool OSKloadcell::run(OSKloadcell *me){
             if(m_dataline.find("EOL") == std::string::npos){
                 m_dataline += std::string(m_readBuffer);
             } else{ //After getting a FULL line, write to file
-                std::cout << m_dataline << std::endl;
-                std::string time = me->getTimestamp() ;
+                std::string time = me->getTimestamp();
+                std::cout << time << ":" << m_dataline << std::endl;
 
                 //TODO: Send trigger to camera to save a frame!!!
                 if(me->getCam() != NULL){
-                    me->getCam()->setTakeSnapshot(true,std::stoi(time));
+                    std::cout << "Sending Cam Snapshot Request" << std::endl;
+                    me->getCam()->setTakeSnapshot(true,std::stol(time));
                 }
 
                 //Write to CSV File

@@ -8,6 +8,8 @@
 
 #include "oskdevice.h"
 
+#define DEBUG_SNAPSHOT true
+
 class OSKdevice;
 
 class OSKcam : public OSKdevice
@@ -23,10 +25,10 @@ public:
      * @return The number of the image at last weight change
      */
     int getImageNum();
-    void setTakeSnapshot(bool toSet, int time);
+    void setTakeSnapshot(bool toSet, long time);
 protected:
     bool getTakeSnapshot();
-    int getTimeSnapshot();
+    long getTimeSnapshot();
 private:
     bool initCam();
 
@@ -40,7 +42,7 @@ private:
 
     //Snapshot Parameters
     std::atomic<bool> m_takeSnapshot {false};
-    std::atomic<int> m_timeSnapshot{0};
+    std::atomic<long> m_timeSnapshot{0};
 
     //Camera Capture Object
     cv::VideoCapture* m_vidCap = NULL;

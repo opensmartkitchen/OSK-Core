@@ -18,7 +18,7 @@ std::string OSKdevice::getTimestamp(){
     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
     std::tm now_tm = *std::localtime(&now_c);
     char timeCstr[70];
-    std::strftime(timeCstr,sizeof timeCstr,"%Y%m%d_%H%M%S",&now_tm);
+    std::strftime(timeCstr,sizeof timeCstr,"%Y%m%d%H%M%S",&now_tm);
 
     return std::string(timeCstr);
 }

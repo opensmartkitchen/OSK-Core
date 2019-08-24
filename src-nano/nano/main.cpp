@@ -13,15 +13,18 @@ using namespace std;
 
 int main()
 {
-    cout << "Testing OSK" << endl;
+    std::cout << "Testing OSK" << std::endl;
+//    std::string filePath = "/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/";
+    std::string filePath = "/home/mc/workspace/OSK-Core/src-nano/testoutputdata/";
+
 
     //Initialize the Load Cell
     OSKloadcell device1("LoadCell",5);
-    device1.setSaveDirPath("/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/");
+    device1.setSaveDirPath(filePath);
 
     //Initialize the Camera
     OSKcam device2("Camera",30);
-    device2.setSaveDirPath("/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/");
+    device2.setSaveDirPath(filePath);
     device1.setCam(&device2);
 
     //Start Devices!

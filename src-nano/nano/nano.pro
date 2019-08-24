@@ -4,7 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 LIBS += -lpthread
-LIBS += -lopencv_core -lopencv_highgui -lopencv_videoio
+LIBS += -lopencv_core -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs
 
 SOURCES += main.cpp \
     oskgadget.cpp \
