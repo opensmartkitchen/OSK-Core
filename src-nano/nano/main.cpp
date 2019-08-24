@@ -16,7 +16,7 @@ int main()
     cout << "Testing OSK" << endl;
 
     OSKloadcell device1("LoadCell",5);
-//    device1.run();
+    device1.setSaveDirPath("/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/");
     device1.start();
 
 //    OSKcam device2("Camera",30);
