@@ -18,6 +18,8 @@ public:
     OSKgadget(std::string id, std::string logDirPath);
     bool init();
     void run();
+    long getScaleLastTimestamp();
+
 private:
     std::string m_logDirPath;
     std::string m_id;

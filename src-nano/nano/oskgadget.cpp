@@ -29,3 +29,7 @@ void OSKgadget::run(){
     m_cam->start();
     m_loadCell->start();
 }
+
+long OSKgadget::getScaleLastTimestamp(){
+    return m_loadCell->getLastChangeTimestamp();
+}

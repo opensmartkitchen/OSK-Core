@@ -19,7 +19,6 @@ int main()
 //    std::string filePath = "/home/mepix/Workspace/OSK-Core/src-nano/testoutputdata/";
     std::string filePath = "/home/mc/workspace/OSK-Core/src-nano/testoutputdata/";
 
-
 //    //Initialize the Load Cell
 //    OSKloadcell device1("LoadCell",5);
 //    device1.setSaveDirPath(filePath);
@@ -33,27 +32,22 @@ int main()
 //    device1.start();
 //    device2.start();
 
+    //Create The Main OSK Gadget
     OSKgadget gadget("Hackday2019",filePath);
     gadget.init();
     gadget.run();
 
-
-
+    //Keep Ticking for our Demo
     std::chrono::time_point<std::chrono::system_clock> start, now, end;
     start = std::chrono::system_clock::now();
-#if (DEBUG == true)
-    device1.getWeight();
-#else
     while(true){
         now = std::chrono::system_clock::now();
         std::chrono::duration<double> elapsed = now - start;
         if(elapsed.count() >= 10){
-            std::cout << "MAIN" << std::endl;
+            std::cout << "LAST WEIGHT CHANGE: " << gadget.getScaleLastTimestamp() << std::endl;
             start = now;
         }
-//        device1.getWeight();
     }
-#endif
 
     return 0;
 }

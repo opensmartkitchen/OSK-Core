@@ -24,8 +24,10 @@ public:
     double getWeight();
     void start();
     void setCam(OSKcam* cam);
+    long getLastChangeTimestamp();
 protected:
     OSKcam* getCam();
+    void setLastChangeTimestamp(long toSet);
 private:
     bool procDataLine();
 
@@ -39,6 +41,7 @@ private:
     double m_data[DATA_LENGTH]; //LAST POINT IS THE AVERAGE!
     double m_weight = 0.0;
     double m_deltaWeight = 0.0;
+    std::atomic<long> m_lastChangeTimestamp{0};
 
     //Pointer to a Camera
     OSKcam* m_cam = NULL;

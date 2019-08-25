@@ -44,6 +44,7 @@ bool OSKloadcell::run(OSKloadcell *me){
                 m_dataline += std::string(m_readBuffer);
             } else{ //After getting a FULL line, write to file
                 std::string time = me->getTimestamp();
+                me->setLastChangeTimestamp(std::stol(time));
                 std::cout << time << ":" << m_dataline << std::endl;
 
                 //TODO: Send trigger to camera to save a frame!!!
@@ -114,3 +115,12 @@ bool OSKloadcell::procDataLine(){
 
     return true;
 }
+
+void OSKloadcell::setLastChangeTimestamp(long toSet){
+    m_lastChangeTimestamp = toSet;
+}
+
+long OSKloadcell::getLastChangeTimestamp(){
+    return m_lastChangeTimestamp;
+}
+
