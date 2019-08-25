@@ -1,5 +1,7 @@
 # OSK-Core
 
+_OSK-Core is part of the development software for the [Hackaday ÓSK Squirrel](https://hackaday.io/project/165563-sk-squirrel) project._
+
 ## Project Overview
 Whether squirrel or human, the food cycle of foraging, stashing, preparing, consuming, sharing and foraging again is a complicated, time-consuming process. Coordinating with the whole family makes for some dramatic chatter.
 
