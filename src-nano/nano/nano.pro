@@ -17,3 +17,8 @@ HEADERS += \
     oskdevice.h \
     oskcam.h \
     oskloadcell.h
+
+macx {
+    INCLUDEPATH += "/opt/opencv/current/include/opencv4"
+    LIBS += -L"/opt/opencv/current/lib"
+}
