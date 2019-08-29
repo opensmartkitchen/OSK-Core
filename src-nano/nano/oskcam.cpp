@@ -35,7 +35,9 @@ bool OSKcam::run(OSKcam *me){
             me->setTakeSnapshot(false,0);
         }
 
-        cv::imshow("CSI Camera",img);
+        if(!OSK_HEADLESS){
+            cv::imshow("CSI Camera",img);
+        }
         int keycode = cv::waitKey(30) & 0xff ;
         if (keycode == 27) break ;
     }

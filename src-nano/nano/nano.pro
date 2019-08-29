@@ -16,7 +16,8 @@ HEADERS += \
     oskgadget.h \
     oskdevice.h \
     oskcam.h \
-    oskloadcell.h
+    oskloadcell.h \
+    oskflags.h
 
 macx {
     INCLUDEPATH += "/opt/opencv/current/include/opencv4"

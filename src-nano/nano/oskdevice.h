@@ -6,6 +6,8 @@
 #include <thread>
 #include <atomic>
 
+#include "oskflags.h"
+
 class OSKdevice
 {
 public:

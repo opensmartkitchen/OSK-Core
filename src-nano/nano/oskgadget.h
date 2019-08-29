@@ -7,6 +7,7 @@
 #include "oskdevice.h"
 #include "oskloadcell.h"
 #include "oskcam.h"
+#include "oskflags.h"
 
 class OSKdevice;
 class OSKloadcell;
